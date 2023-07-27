@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model gRPCClient_Assignment2.Protos.Book.protoBooks;
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Book List</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+    @ViewBag.StringJSON
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <span>Id</span>
+            </th>
+            <th>
+                <span>Title</span>
+            </th>
+            <th>
+                <span>ISBN</span>
+            </th>
+            <th>
+                <span>Location Name</span>
+            </th>
+            <th>
+                Press Name
+            </th>
+            <th>
+                <span>Price</span>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Isbn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Press.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit","Edit",new {  id=item.Id})
+                    @Html.ActionLink("Details","Details",new { id=item.Id})
+                    @Html.ActionLink("Delete","Delete",new { id=item.Id})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

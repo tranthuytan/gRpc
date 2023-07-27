@@ -1,0 +1,79 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model gRPCClient_Assignment2.Protos.Book.protoBook
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>Create Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" action="@Url.Action("Edit")">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.Id" class="control-label"></label>
+                <input asp-for="@Model.Id" value="@Model.Id" readonly class="form-control" />
+                <span asp-validation-for="@Model.Isbn" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Isbn" class="control-label"></label>
+                <input asp-for="@Model.Isbn" value="@Model.Isbn" class="form-control" />
+                <span asp-validation-for="@Model.Isbn" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="@Model.Title" class="control-label"></label>
+                <input asp-for="@Model.Title" value="@Model.Title" class="form-control" />
+                <span asp-validation-for="@Model.Title" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="@Model.Author" class="control-label"></label>
+                <input asp-for="@Model.Author" value="@Model.Author" class="form-control" />
+                <span asp-validation-for="@Model.Author" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="@Model.Price" class="control-label"></label>
+                <input asp-for="@Model.Price" value="@Model.Price" class="form-control" />
+                <span asp-validation-for="@Model.Price" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="@Model.LocationName" class="control-label"></label>
+                <select asp-for="@Model.LocationName" class="form-control">
+                    <option value="HCM City">HCM City</option>
+                    <option value="Ha Noi City">Ha Noi City</option>
+                    <option value="Da Nang City">Da Nang City</option>
+                    <option value="Quy Nhon City">Quy Nhon City</option>
+                </select>
+                <span asp-validation-for="@Model.LocationName" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="@Model.PressId" class="control-label"></label>
+                <select asp-for="@Model.PressId" class="form-control">
+                    <option value=1>Addison-Wesley</option>
+                    <option value=2>Addison-Mercedes</option>
+                    <option value=3>John-Doe</option>
+                </select>
+                <span asp-validation-for="@Model.PressId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

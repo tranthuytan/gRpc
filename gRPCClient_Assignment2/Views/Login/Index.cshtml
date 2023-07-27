@@ -1,0 +1,41 @@
+﻿@model gRPCClient_Assignment2.Protos.Auth.protoUser
+@{
+	ViewData["Title"] = "Login";
+}
+<h1>Login</h1>
+<div class="row">
+	@if (@ViewData["Message"] != null)
+	{
+		<span class="text-danger">@ViewData["Message"]</span>
+
+	}
+	<div class=col-md-4>
+		<form method="post" action="@Url.Action("Login")">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="@Model.Username" class="control-label"></label>
+				<input type="text" asp-for="@Model.Username" class="form-control">
+				<span asp-validation-for="@Model.Username" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="@Model.Password" class="control-label"></label>
+				<input type="password" asp-for="@Model.Password" class="form-control">
+				<span asp-validation-for="@Model.Password" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<p><a asp-action="Register">Create Account</a></p>
+			</div>
+
+			<div class="form-group">
+				<input type="submit" value="Login" class="btn btn-primary">
+			</div>
+		</form>
+	</div>
+</div>
+@section Scripts {
+    @{
+	await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

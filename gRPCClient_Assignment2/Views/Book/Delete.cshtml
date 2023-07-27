@@ -1,0 +1,82 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model gRPCClient_Assignment2.Protos.Book.protoBook
+@{
+    ViewData["Title"] = "Deleting";
+}
+<h1>Are you sure you want to delete this book?</h1>
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model=>model.Id)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model=>model.Id)
+    </dd>
+    
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model=>model.Isbn)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model=>model.Isbn)
+    </dd>
+    
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model=>model.Title)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model=>model.Title)
+    </dd>
+    
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model=>model.Author)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model=>model.Author)
+    </dd>
+    
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model=>model.Price)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model=>model.Price)
+    </dd>
+    
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model=>model.Location.City)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model=>model.Location.City)
+    </dd>
+    
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model=>model.Location.Street)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model=>model.Location.Street)
+    </dd>
+    
+    <dt class="col-sm-2">
+        <p>Press Name</p>
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model=>model.Press.Name)
+    </dd>
+    
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model=>model.Press.Category)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model=>model.Press.Category)
+    </dd>
+</dl>
+@*<button class="btn-danger">
+    @Html.ActionLink("Delete","Delete",new {id=Model.Id})
+</button>*@
+<form method="post" action=@Url.Action("Delete",new {id=Model.Id})>
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Delete" class="btn btn-danger"/>
+</form>
+<br/>
+@Html.ActionLink("Back to list","Index")
+

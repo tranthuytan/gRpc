@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model gRPCClient_Assignment2.Protos.Auth.protoUser
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h4>Register</h4>
+<hr />
+<div class="row">
+    @if (@ViewData["Message"] != null)
+	{
+		<span class="text-danger">@ViewData["Message"]</span>
+
+	}
+    <div class="col-md-4">
+        <form method="post" action="@Url.Action("Register")">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*Name*@
+            <div class="form-group">
+                <label asp-for="@Model.Name" class="control-label"></label>
+                <input asp-for="@Model.Name" class="form-control" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            @*Username*@
+            <div class="form-group">
+                <label asp-for="@Model.Username" class="control-label"></label>
+                <input asp-for="@Model.Username" class="form-control" />
+                <span asp-validation-for="@Model.Username" class="text-danger"></span>
+            </div>
+            @*Password*@
+            <div class="form-group">
+                <label asp-for="@Model.Password" class="control-label"></label>
+                <input asp-for="@Model.Password" type="password" class="form-control" />
+                <span asp-validation-for="@Model.Password" class="text-danger"></span>
+            </div>
+            @*Role*@
+            <div class="form-group">
+                <label asp-for="@Model.Role" class="control-label"></label>
+                <select asp-for="@Model.Role" class="form-control">
+                    <option value="0">Administrator</option>
+                    <option value="1">Customer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Login</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

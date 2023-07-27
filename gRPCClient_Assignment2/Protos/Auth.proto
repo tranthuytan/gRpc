@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPCClient_Assignment2.Protos.Auth";
+
+service Auth {
+	rpc Login (protoUser) returns (protoJwt);
+	rpc Register (protoUser) returns (isSuccess);
+}
+message protoJwt {
+	string jwt = 1;
+}
+message protoUser {
+	int32 Id=1;
+	string Name=2;
+	string Username=3;
+	string Password=4;
+	int32 Role=5;
+}
+message isSuccess {
+	bool Success=1;
+}

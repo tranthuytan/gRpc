@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPCService_Assignment2.Protos";
+
+service BookStoreCRUD {
+	rpc SelectAll (Empty) returns (protoBooks);
+	rpc SelectById (protoBookFilter) returns (protoBook);
+	rpc Insert (protoBook) returns (Empty);
+	rpc Delete (protoBook) returns (Empty);
+	rpc Update (protoBook) returns (Empty);
+}
+message Empty {
+	string Message=1;
+}
+message protoBook {
+	int32 Id=1;
+	string Isbn=2;
+	string Title=3;
+	string Author=4;
+	double Price=5;
+	string LocationName=6;
+	protoAddress Location=7;
+	int32 PressId=8;
+	protoPress Press=9;
+}
+message protoAddress {
+	string City=1;
+	string Street=2;
+}
+message protoPress {
+	int32 Id=1;
+	string Name=2;
+	int32 Category=3;
+}
+message protoBooks {
+	repeated protoBook items=1;
+}
+message protoBookFilter {
+	int32 bookId=1;
+}
